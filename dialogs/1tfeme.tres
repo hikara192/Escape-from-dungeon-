@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=4 format=3 uid="uid://bo5lolxanesn6"]
+
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_ewlll"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_ofl26"]
+
+[sub_resource type="Resource" id="Resource_11een"]
+script = ExtResource("1_ewlll")
+overrides = {
+"global_font": "\"res://res/Trick thik.ttf\""
+}
+
+[resource]
+script = ExtResource("2_ofl26")
+name = "1tfeme"
+layer_list = Array[String]([])
+layer_info = {
+"": SubResource("Resource_11een")
+}
+base_overrides = {}
+layers = Array[ExtResource("1_ewlll")]([])
+metadata/_latest_layer = ""

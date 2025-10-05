@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwyrjrij2sfyf"]
+
+[ext_resource type="Script" uid="uid://ci8sqjml5lxww" path="res://ExitDoor/exit_door.gd" id="1_igbbo"]
+[ext_resource type="Texture2D" uid="uid://bti66lsyiw6aw" path="res://res/models/door cls.png" id="1_lga6x"]
+[ext_resource type="Texture2D" uid="uid://co6h6vfqunbe8" path="res://res/models/door opn.png" id="2_igbbo"]
+[ext_resource type="Texture2D" uid="uid://du4u6wkx82fue" path="res://res/models/circle.png" id="4_wqcql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqcql"]
+size = Vector2(92.0262, 125.829)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrqcy"]
+size = Vector2(311.7, 283.064)
+
+[node name="ExitDoor" type="Node2D"]
+position = Vector2(10, -48)
+scale = Vector2(0.426693, 0.388503)
+script = ExtResource("1_igbbo")
+
+[node name="CloseDoor" type="Sprite2D" parent="."]
+position = Vector2(-27, 21)
+texture = ExtResource("1_lga6x")
+metadata/_edit_lock_ = true
+
+[node name="OpenDoor" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-27, 21)
+texture = ExtResource("2_igbbo")
+metadata/_edit_lock_ = true
+
+[node name="GoToNextScene" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToNextScene"]
+position = Vector2(-23.4361, 54.0536)
+shape = SubResource("RectangleShape2D_wqcql")
+
+[node name="DoorOpenAnimate" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpenAnimate"]
+position = Vector2(-29.2951, 25.7768)
+shape = SubResource("RectangleShape2D_yrqcy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-18.7488, 36.0358)
+scale = Vector2(1.23169, 1.11061)
+color = Color(0.985322, 0.666728, 0.4416, 1)
+energy = 1.27
+range_z_min = -9
+range_layer_min = -1
+range_layer_max = 4
+shadow_enabled = true
+texture = ExtResource("4_wqcql")
+
+[connection signal="body_entered" from="GoToNextScene" to="." method="_on_go_to_next_scene_body_entered"]
+[connection signal="body_entered" from="DoorOpenAnimate" to="." method="_on_door_open_animate_body_entered"]
+[connection signal="body_exited" from="DoorOpenAnimate" to="." method="_on_door_open_animate_body_exited"]

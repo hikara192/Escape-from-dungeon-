@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://mtpq50qej4vg"]
+
+[ext_resource type="Script" uid="uid://b1d1y8bb08d3v" path="res://Menus/hall_of_fame.gd" id="1_egmcp"]
+[ext_resource type="PackedScene" uid="uid://b1m84i6njtbc6" path="res://BG/bg.tscn" id="2_4or7f"]
+[ext_resource type="Texture2D" uid="uid://6c3ay1gjlll5" path="res://res/models/back.png" id="2_f4ukc"]
+[ext_resource type="FontFile" uid="uid://l73e23jux0ai" path="res://res/Trick thik.ttf" id="3_sdfl5"]
+[ext_resource type="Texture2D" uid="uid://di0pqntmh4s2c" path="res://res/models/best score.png" id="4_f4ukc"]
+[ext_resource type="FontFile" uid="uid://cnc00n6ffab2y" path="res://res/DigitalPixelV31-Regular_0.otf" id="5_tnny6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4ukc"]
+line_spacing = 10.0
+paragraph_spacing = 10.0
+font = ExtResource("5_tnny6")
+font_size = 17
+font_color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="HallOfFame" type="CanvasLayer"]
+script = ExtResource("1_egmcp")
+
+[node name="GoBack" type="Button" parent="."]
+offset_left = 823.0
+offset_top = 523.0
+offset_right = 1102.0
+offset_bottom = 657.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Back" type="Sprite2D" parent="GoBack"]
+position = Vector2(351, 75.5)
+scale = Vector2(2.7, 3.1875)
+texture = ExtResource("2_f4ukc")
+
+[node name="BestScore" type="Sprite2D" parent="."]
+position = Vector2(1112, 306)
+scale = Vector2(2.15375, 3.37031)
+texture = ExtResource("4_f4ukc")
+
+[node name="Label" type="Label" parent="BestScore"]
+offset_left = -21.3581
+offset_top = -11.5716
+offset_right = 95.6419
+offset_bottom = 16.4284
+theme_override_fonts/font = ExtResource("3_sdfl5")
+label_settings = SubResource("LabelSettings_f4ukc")
+
+[node name="BG" parent="." instance=ExtResource("2_4or7f")]
+
+[connection signal="pressed" from="GoBack" to="." method="_on_go_back_pressed"]

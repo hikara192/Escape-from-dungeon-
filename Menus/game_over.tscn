@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cekkw3ie4pste"]
+
+[ext_resource type="Script" uid="uid://w5fd4gal7i0g" path="res://Menus/game_over.gd" id="1_i0iaq"]
+[ext_resource type="Texture2D" uid="uid://co3x308ic5urd" path="res://res/models/you died (2).png" id="2_tcx34"]
+[ext_resource type="PackedScene" uid="uid://b1m84i6njtbc6" path="res://BG/bg.tscn" id="3_tcx34"]
+
+[node name="GameOver" type="CanvasLayer"]
+auto_translate_mode = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 802.0
+offset_top = 538.0
+offset_right = 1158.0
+offset_bottom = 657.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("1_i0iaq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="YouDied(2)" type="Sprite2D" parent="."]
+position = Vector2(1028, 675)
+scale = Vector2(2.585, 1.775)
+texture = ExtResource("2_tcx34")
+
+[node name="BG" parent="." instance=ExtResource("3_tcx34")]
+
+[connection signal="pressed" from="Button" to="Button" method="_on_you_died_pressed"]
+[connection signal="timeout" from="Timer" to="Button" method="_on_timer_timeout"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://66y4d8d3gubv"]
+
+[ext_resource type="Script" uid="uid://s4mjt787kx0c" path="res://Menus/in_game_menu.gd" id="1_air1d"]
+[ext_resource type="Texture2D" uid="uid://db03wrrib4dhw" path="res://res/models/menu.png" id="2_air1d"]
+[ext_resource type="Texture2D" uid="uid://d4ebkvfkmfj52" path="res://res/models/score in game.png" id="3_64lv1"]
+[ext_resource type="FontFile" uid="uid://cnc00n6ffab2y" path="res://res/DigitalPixelV31-Regular_0.otf" id="4_a74b5"]
+[ext_resource type="Texture2D" uid="uid://tqosywphdjw0" path="res://res/models/high score.png" id="4_r4hls"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6el8m"]
+font = ExtResource("4_a74b5")
+font_size = 18
+font_color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a74b5"]
+font = ExtResource("4_a74b5")
+font_size = 18
+font_color = Color(0.79, 0.79, 0.79, 1)
+
+[node name="InGameMenu" type="CanvasLayer"]
+script = ExtResource("1_air1d")
+
+[node name="exitMM" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -118.0
+offset_bottom = 43.0
+grow_horizontal = 0
+
+[node name="Exit" type="Sprite2D" parent="."]
+position = Vector2(1866.5, 16.5)
+scale = Vector2(1.036, 0.97)
+texture = ExtResource("2_air1d")
+
+[node name="ScoreInGame" type="Sprite2D" parent="."]
+position = Vector2(1677, 21)
+scale = Vector2(1.028, 1)
+texture = ExtResource("3_64lv1")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1676.0
+offset_top = 9.0
+offset_right = 1753.0
+offset_bottom = 47.0
+text = "1"
+label_settings = SubResource("LabelSettings_6el8m")
+
+[node name="HighScore" type="Sprite2D" parent="."]
+position = Vector2(1382, 35)
+scale = Vector2(1, 1.02)
+texture = ExtResource("4_r4hls")
+
+[node name="HiScore" type="Label" parent="."]
+offset_left = 1431.0
+offset_top = 9.0
+offset_right = 1497.0
+offset_bottom = 48.0
+text = "2"
+label_settings = SubResource("LabelSettings_a74b5")
+
+[connection signal="pressed" from="exitMM" to="." method="_on_exit_mm_pressed"]
