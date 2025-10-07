@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://421imq8ewqqa"]
+[gd_scene load_steps=25 format=3 uid="uid://421imq8ewqqa"]
 
 [ext_resource type="Texture2D" uid="uid://c0aobbnkduc05" path="res://BG/bg f scn 1234.png" id="1_7csao"]
 [ext_resource type="Script" uid="uid://dnuvm2yc5qp6h" path="res://Levels/level_4.gd" id="1_xrw8b"]
 [ext_resource type="PackedScene" uid="uid://dwyrjrij2sfyf" path="res://ExitDoor/exit_door.tscn" id="2_xrw8b"]
+[ext_resource type="PackedScene" uid="uid://bhlcp0785gt86" path="res://Items/fire.tscn" id="3_3k6h0"]
 [ext_resource type="PackedScene" uid="uid://66y4d8d3gubv" path="res://Menus/in_game_menu.tscn" id="3_jtuoa"]
 [ext_resource type="PackedScene" uid="uid://badmw168qavq6" path="res://Items/soul.tscn" id="4_cajnr"]
 [ext_resource type="PackedScene" uid="uid://ubt5p60jnniq" path="res://Items/soul2.tscn" id="5_3k6h0"]
@@ -1478,6 +1479,10 @@ sources/0 = SubResource("TileSetAtlasSource_tuji2")
 scale = Vector2(0.890909, 1.06208)
 script = ExtResource("1_xrw8b")
 
+[node name="Node2D" parent="." instance=ExtResource("3_3k6h0")]
+position = Vector2(314.286, 942.49)
+scale = Vector2(1.12245, 0.941549)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -1487,6 +1492,10 @@ motion_mirroring = Vector2(927.415, 0)
 position = Vector2(471, 866)
 scale = Vector2(0.50625, 0.562963)
 texture = ExtResource("1_7csao")
+
+[node name="CanvasModulate2" type="CanvasModulate" parent="ParallaxBackground"]
+z_index = -1
+color = Color(0.300585, 0.344218, 0.406344, 1)
 
 [node name="ExitDoor" parent="." instance=ExtResource("2_xrw8b")]
 position = Vector2(2003.57, 785.251)
@@ -1572,3 +1581,6 @@ position = Vector2(1492.86, 848.335)
 
 [node name="Spikes9" parent="." instance=ExtResource("18_cajnr")]
 position = Vector2(1687.04, 847.394)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.54099, 0.54099, 0.54099, 1)

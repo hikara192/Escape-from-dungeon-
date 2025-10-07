@@ -1486,6 +1486,10 @@ position = Vector2(471, 866)
 scale = Vector2(0.50625, 0.562963)
 texture = ExtResource("1_663ia")
 
+[node name="CanvasModulate2" type="CanvasModulate" parent="ParallaxBackground"]
+z_index = -1
+color = Color(0.300585, 0.344218, 0.406344, 1)
+
 [node name="ExitDoor" parent="." instance=ExtResource("2_cdn2q")]
 position = Vector2(1939.59, 833.27)
 scale = Vector2(0.425909, 0.386189)
@@ -1546,3 +1550,6 @@ nine_patch_stretch = true
 texture_under = ExtResource("13_niqni")
 texture_over = ExtResource("14_27v4l")
 texture_progress = ExtResource("15_5gdd3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.54099, 0.54099, 0.54099, 1)

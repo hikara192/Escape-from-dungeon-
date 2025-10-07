@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxbtoj5xbkixk"]
+[gd_scene load_steps=30 format=3 uid="uid://bxbtoj5xbkixk"]
 
 [ext_resource type="Texture2D" uid="uid://c0aobbnkduc05" path="res://BG/bg f scn 1234.png" id="1_7fl83"]
 [ext_resource type="PackedScene" uid="uid://dhtnat50lg2ld" path="res://Player/player.tscn" id="1_f3sb7"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bm0sy4gs4u7v6" path="res://res/models/HP-exportuner.png" id="15_p2sgf"]
 [ext_resource type="Texture2D" uid="uid://6op7b2y3sq7n" path="res://res/models/hpbarcompl.png" id="16_ufevr"]
 [ext_resource type="Texture2D" uid="uid://btiaykvh68and" path="res://res/models/HP-export.png" id="17_ufevr"]
+[ext_resource type="PackedScene" uid="uid://rnljm428ni7d" path="res://Enimies/gnome.tscn" id="20_13mt1"]
 [ext_resource type="PackedScene" uid="uid://bhlcp0785gt86" path="res://Items/fire.tscn" id="20_qg0tc"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qg0tc"]
@@ -1981,3 +1982,6 @@ texture_progress = ExtResource("17_ufevr")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.54099, 0.54099, 0.54099, 1)
+
+[node name="gnome" parent="." instance=ExtResource("20_13mt1")]
+position = Vector2(732.959, 1040.41)
