@@ -365,7 +365,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wiijg"]
-size = Vector2(8.25, 26)
+size = Vector2(20.25, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfx0g"]
 size = Vector2(8, 5.5)
@@ -391,7 +391,7 @@ frame_progress = 1.0
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attackarea"]
-position = Vector2(10.875, -13)
+position = Vector2(16.875, -13)
 shape = SubResource("RectangleShape2D_wiijg")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -407,4 +407,5 @@ position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_yfx0g")
 
 [connection signal="body_entered" from="Attackarea" to="." method="_on_attackarea_body_entered"]
+[connection signal="body_exited" from="Attackarea" to="." method="_on_attackarea_body_exited"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

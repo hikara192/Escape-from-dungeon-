@@ -354,4 +354,5 @@ position = Vector2(-8, -33)
 shape = SubResource("RectangleShape2D_abytr")
 
 [connection signal="body_entered" from="Attackarea" to="." method="_on_attackarea_body_entered"]
+[connection signal="body_exited" from="Attackarea" to="." method="_on_attackarea_body_exited"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
