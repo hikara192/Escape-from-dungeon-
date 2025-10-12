@@ -100,6 +100,9 @@ func die():
 	
 	print("💀 Враг умирает!")
 	
+	# УДАЛЯЕМ ВСЕ AREA2D СРАЗУ ПРИ СМЕРТИ
+	remove_all_area2d()
+	
 	if $AnimatedSprite2D.sprite_frames.has_animation("Death"):
 		$AnimatedSprite2D.play("Death")
 		await $AnimatedSprite2D.animation_finished
@@ -108,14 +111,35 @@ func die():
 	
 	queue_free()
 
+# Функция для удаления всех Area2D
+func remove_all_area2d():
+	print("🗑️ Удаляем все Area2D...")
+	
+	# Ищем все дочерние Area2D узлы
+	for child in get_children():
+		if child is Area2D:
+			print("✅ Удален Area2D: ", child.name)
+			child.queue_free()
+	
+	# Также отключаем все коллизии
+	$CollisionShape2D.set_deferred("disabled", true)
+
 # АТАКА ПРИ ВХОДЕ ИГРОКА В ЗОНУ
 func _on_attackarea_body_entered(body: Node2D) -> void:
+	# Проверяем, что враг не мертв
+	if is_dead:
+		return
+		
 	if body.is_in_group("player") and body.has_method("take_damage") and not is_attacking and not is_taking_damage:
 		print("🎯 Игрок вошел в зону атаки!")
 		start_attack(body)
 
 # Начать атаку
 func start_attack(player):
+	# Проверяем, что враг не мертв
+	if is_dead:
+		return
+		
 	is_attacking = true
 	
 	# Проигрываем анимацию атаки
@@ -128,8 +152,8 @@ func start_attack(player):
 		print("⚠️ Анимации атаки нет, используем таймер")
 		await get_tree().create_timer(0.5).timeout
 	
-	# Наносим урон игроку
-	if is_instance_valid(player) and player.has_method("take_damage"):
+	# Наносим урон игроку (проверяем что враг еще не умер во время анимации)
+	if not is_dead and is_instance_valid(player) and player.has_method("take_damage"):
 		print("💥 Наносим урон игроку: ", attack_damage)
 		player.take_damage(attack_damage)
 	
@@ -143,6 +167,9 @@ func start_attack(player):
 
 # Обработчик завершения анимации
 func _on_animated_sprite_2d_animation_finished():
+	if is_dead:
+		return
+		
 	if $AnimatedSprite2D.animation == "Attack":
 		print("Анимация атаки завершена")
 	elif $AnimatedSprite2D.animation == "Damage":

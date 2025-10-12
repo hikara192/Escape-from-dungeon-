@@ -274,3 +274,25 @@ func _input(event):
 			print("Тела в зоне: ", bodies.size())
 			for body in bodies:
 				print(" - ", body.name, " (enemies: ", body.is_in_group("enemies"), ")")
+				
+func apply_bounce(force: Vector2):
+	if is_dead:
+		return
+	
+
+	
+	# Сбрасываем вертикальную скорость для чистого отскока
+	velocity.y = 0
+	
+	# Применяем силу отскока
+	velocity += force
+	
+	# Делаем игрока временно неуязвимым
+	is_invulnerable = true
+	invulnerability_time = 0.3
+	
+	# Визуальный эффект отскока
+	await get_tree().create_timer(0.2).timeout
+
+
+	
