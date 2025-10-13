@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://ccy2hums01344"]
+[gd_scene load_steps=24 format=3 uid="uid://ccy2hums01344"]
 
 [ext_resource type="Script" uid="uid://bfiymhjrnhmep" path="res://Levels/level_3.gd" id="1_uyp6w"]
 [ext_resource type="Texture2D" uid="uid://c0aobbnkduc05" path="res://BG/bg f scn 1234.png" id="1_xxxi4"]
 [ext_resource type="PackedScene" uid="uid://dwyrjrij2sfyf" path="res://ExitDoor/exit_door.tscn" id="2_4c4gq"]
 [ext_resource type="PackedScene" uid="uid://bhlcp0785gt86" path="res://Items/fire.tscn" id="2_t21pv"]
+[ext_resource type="PackedScene" uid="uid://d3ftdadh6033l" path="res://Items/light.tscn" id="2_xc3xs"]
 [ext_resource type="Texture2D" uid="uid://chybt5m5crw48" path="res://res/models/models.png" id="3_3e7p2"]
 [ext_resource type="PackedScene" uid="uid://66y4d8d3gubv" path="res://Menus/in_game_menu.tscn" id="4_dxjb0"]
 [ext_resource type="PackedScene" uid="uid://74rqwbew1h2j" path="res://Traps/Spikes/spikes.tscn" id="5_hx0pg"]
@@ -1477,14 +1478,14 @@ sources/0 = SubResource("TileSetAtlasSource_tuji2")
 scale = Vector2(0.890909, 1.06208)
 script = ExtResource("1_uyp6w")
 
+[node name="Node2D" parent="." instance=ExtResource("2_xc3xs")]
+position = Vector2(186.327, 825.738)
+
 [node name="Node2D8" parent="." instance=ExtResource("2_t21pv")]
 position = Vector2(1565.82, 756.064)
 
 [node name="Node2D7" parent="." instance=ExtResource("2_t21pv")]
 position = Vector2(1302.04, 762.654)
-
-[node name="Node2D6" parent="." instance=ExtResource("2_t21pv")]
-position = Vector2(1039.39, 770.187)
 
 [node name="Node2D5" parent="." instance=ExtResource("2_t21pv")]
 position = Vector2(789.082, 836.095)
@@ -1492,14 +1493,8 @@ position = Vector2(789.082, 836.095)
 [node name="Node2D4" parent="." instance=ExtResource("2_t21pv")]
 position = Vector2(525.306, 853.985)
 
-[node name="Node2D3" parent="." instance=ExtResource("2_t21pv")]
-position = Vector2(261.531, 797.492)
-
 [node name="Node2D2" parent="." instance=ExtResource("2_t21pv")]
 position = Vector2(261.531, 933.075)
-
-[node name="Node2D" parent="." instance=ExtResource("2_t21pv")]
-position = Vector2(46.0204, 950.023)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1578,3 +1573,6 @@ texture_progress = ExtResource("15_t21pv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.54099, 0.54099, 0.54099, 1)
+
+[node name="Node2D3" parent="." instance=ExtResource("2_xc3xs")]
+position = Vector2(1065.2, 819.147)

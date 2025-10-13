@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalVars="*res://Global/global_vars.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+TransitionScreen="*res://transition_screen.tscn"
 
 [dialogic]
 

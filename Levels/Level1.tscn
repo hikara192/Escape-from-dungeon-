@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://bxbtoj5xbkixk"]
+[gd_scene load_steps=31 format=3 uid="uid://bxbtoj5xbkixk"]
 
 [ext_resource type="Texture2D" uid="uid://c0aobbnkduc05" path="res://BG/bg f scn 1234.png" id="1_7fl83"]
 [ext_resource type="PackedScene" uid="uid://dhtnat50lg2ld" path="res://Player/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://djllumir66cr8" path="res://Levels/level_1.gd" id="1_f5cpa"]
+[ext_resource type="PackedScene" uid="uid://d3ftdadh6033l" path="res://Items/light.tscn" id="2_13mt1"]
 [ext_resource type="Texture2D" uid="uid://chybt5m5crw48" path="res://res/models/models.png" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://dwyrjrij2sfyf" path="res://ExitDoor/exit_door.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://66y4d8d3gubv" path="res://Menus/in_game_menu.tscn" id="5_036b0"]
@@ -1887,6 +1888,12 @@ sources/2 = SubResource("TileSetAtlasSource_p5226")
 [node name="world" type="Node2D"]
 scale = Vector2(0.890909, 1.06208)
 script = ExtResource("1_f5cpa")
+
+[node name="Node2D4" parent="." instance=ExtResource("2_13mt1")]
+position = Vector2(1994.59, 1010.28)
+
+[node name="Node2D3" parent="." instance=ExtResource("2_13mt1")]
+position = Vector2(1152.76, 1030.05)
 
 [node name="Node2D5" parent="." instance=ExtResource("20_qg0tc")]
 position = Vector2(1565.82, 958.497)

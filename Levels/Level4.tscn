@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://421imq8ewqqa"]
+[gd_scene load_steps=26 format=3 uid="uid://421imq8ewqqa"]
 
 [ext_resource type="Texture2D" uid="uid://c0aobbnkduc05" path="res://BG/bg f scn 1234.png" id="1_7csao"]
 [ext_resource type="Script" uid="uid://dnuvm2yc5qp6h" path="res://Levels/level_4.gd" id="1_xrw8b"]
 [ext_resource type="PackedScene" uid="uid://dwyrjrij2sfyf" path="res://ExitDoor/exit_door.tscn" id="2_xrw8b"]
+[ext_resource type="PackedScene" uid="uid://d3ftdadh6033l" path="res://Items/light.tscn" id="3_0g065"]
 [ext_resource type="PackedScene" uid="uid://bhlcp0785gt86" path="res://Items/fire.tscn" id="3_3k6h0"]
 [ext_resource type="PackedScene" uid="uid://66y4d8d3gubv" path="res://Menus/in_game_menu.tscn" id="3_jtuoa"]
 [ext_resource type="PackedScene" uid="uid://badmw168qavq6" path="res://Items/soul.tscn" id="4_cajnr"]
@@ -1478,6 +1479,18 @@ sources/0 = SubResource("TileSetAtlasSource_tuji2")
 [node name="world" type="Node2D"]
 scale = Vector2(0.890909, 1.06208)
 script = ExtResource("1_xrw8b")
+
+[node name="Node2D5" parent="." instance=ExtResource("3_3k6h0")]
+position = Vector2(1694.9, 787.135)
+
+[node name="Node2D2" parent="." instance=ExtResource("3_0g065")]
+position = Vector2(713.878, 929.309)
+
+[node name="Node2D3" parent="." instance=ExtResource("3_0g065")]
+position = Vector2(1013.57, 808.79)
+
+[node name="Node2D4" parent="." instance=ExtResource("3_3k6h0")]
+position = Vector2(1492.86, 788.076)
 
 [node name="Node2D" parent="." instance=ExtResource("3_3k6h0")]
 position = Vector2(314.286, 942.49)

@@ -367,8 +367,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wiijg"]
 size = Vector2(20.25, 26)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfx0g"]
-size = Vector2(8, 5.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a1se"]
+size = Vector2(14, 4.5)
 
 [node name="gnome" type="CharacterBody2D"]
 collision_layer = 2
@@ -403,8 +403,8 @@ collide_with_areas = true
 script = ExtResource("3_5a1se")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -23)
-shape = SubResource("RectangleShape2D_yfx0g")
+position = Vector2(0, -24.75)
+shape = SubResource("RectangleShape2D_5a1se")
 
 [connection signal="body_entered" from="Attackarea" to="." method="_on_attackarea_body_entered"]
 [connection signal="body_exited" from="Attackarea" to="." method="_on_attackarea_body_exited"]
