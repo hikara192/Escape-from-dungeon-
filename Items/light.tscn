@@ -104,8 +104,8 @@ autoplay = "default"
 frame_progress = 0.666306
 
 [node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
-position = Vector2(-3, 1)
-scale = Vector2(0.737572, 0.684406)
+position = Vector2(-22.96, -42.192)
+scale = Vector2(0.554774, 0.5374)
 color = Color(0.894862, 0.495004, 0.154151, 1)
 energy = 1.7
 range_z_min = -9

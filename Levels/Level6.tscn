@@ -1477,6 +1477,7 @@ scale = Vector2(0.890909, 1.06208)
 script = ExtResource("1_cdn2q")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(927.415, 0)

@@ -1497,6 +1497,7 @@ position = Vector2(314.286, 942.49)
 scale = Vector2(1.12245, 0.941549)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(927.415, 0)

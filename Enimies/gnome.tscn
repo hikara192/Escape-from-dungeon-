@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c8df6k1vbtd7b" path="res://Enimies/hadgnome.gd" id="3_5a1se"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehi2d"]
-size = Vector2(13, 23)
+size = Vector2(13.5, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5a1se"]
 atlas = ExtResource("2_wiijg")
@@ -368,7 +368,7 @@ animations = [{
 size = Vector2(20.25, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a1se"]
-size = Vector2(14, 4.5)
+size = Vector2(3, 4.25)
 
 [node name="gnome" type="CharacterBody2D"]
 collision_layer = 2
@@ -376,7 +376,7 @@ collision_mask = 24
 script = ExtResource("1_wiijg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11.5)
+position = Vector2(-0.25, -13)
 shape = SubResource("RectangleShape2D_ehi2d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -403,7 +403,7 @@ collide_with_areas = true
 script = ExtResource("3_5a1se")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -24.75)
+position = Vector2(-0.5, -26)
 shape = SubResource("RectangleShape2D_5a1se")
 
 [connection signal="body_entered" from="Attackarea" to="." method="_on_attackarea_body_entered"]
