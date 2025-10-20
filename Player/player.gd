@@ -206,6 +206,8 @@ func _on_pickup_area_area_entered(area: Area2D):
 		print("🎁 Предмет собран!")
 
 func take_damage(damage: int):
+	$Camera2D.shake(0.3,#(200) добавить больше силы (хз добалвять или нет xD
+	)
 	if is_invulnerable or is_dead:
 		return
 	

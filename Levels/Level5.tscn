@@ -1571,11 +1571,9 @@ script = ExtResource("1_nxrld")
 
 [node name="Node2D4" parent="." instance=ExtResource("2_xqqd2")]
 position = Vector2(910.306, 841.745)
-scale = Vector2(1, 1)
 
 [node name="Node2D3" parent="." instance=ExtResource("2_7wtyh")]
 position = Vector2(464.694, 925.542)
-scale = Vector2(1, 1)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1

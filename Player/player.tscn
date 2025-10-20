@@ -1,8 +1,9 @@
-[gd_scene load_steps=67 format=3 uid="uid://dhtnat50lg2ld"]
+[gd_scene load_steps=68 format=3 uid="uid://dhtnat50lg2ld"]
 
 [ext_resource type="Script" uid="uid://2t8yusqv15fi" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://craawer3dnl0s" path="res://res/models/red.png" id="2_btcbx"]
 [ext_resource type="Texture2D" uid="uid://du4u6wkx82fue" path="res://res/models/circle.png" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://do5qpdtjv3b2c" path="res://Player/camera.gd" id="3_gwnis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btcbx"]
 size = Vector2(51, 48)
@@ -515,6 +516,7 @@ drag_left_margin = 0.1
 drag_right_margin = 0.1
 editor_draw_limits = true
 editor_draw_drag_margin = true
+script = ExtResource("3_gwnis")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
