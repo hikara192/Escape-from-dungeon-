@@ -3,7 +3,8 @@ extends CanvasLayer
 func _ready() -> void:
 	if GlobalVars.last_level == "":
 		$return.visible = false
-
+	if MusicManager:
+		MusicManager.stop_music()
 func hide_all_content():
 	# Получаем все дочерние ноды и скрываем только те, у которых есть свойство visible
 	for child in get_children():

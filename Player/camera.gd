@@ -5,8 +5,11 @@ var shake_until := 0.0
 var shake_next := 0.0
 var shake_offset := Vector2.ZERO
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
 	if shake_until < Time.get_ticks_msec():
 		offset = lerp(offset, Vector2.ZERO, delta*10)
 		return

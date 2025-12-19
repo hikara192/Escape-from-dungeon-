@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://daldoclputwhj" path="res://Enimies/area_2d.gd" id="3_6vjl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johpc"]
-size = Vector2(121, 70)
+size = Vector2(96, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06lat"]
 atlas = ExtResource("2_o3g6i")
@@ -115,7 +115,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehi2d"]
-size = Vector2(121, 70)
+size = Vector2(96, 70)
 
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 0
@@ -127,7 +127,7 @@ script = ExtResource("1_5dfvv")
 script = ExtResource("3_6vjl5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.5, -49)
+position = Vector2(4, -49)
 shape = SubResource("RectangleShape2D_johpc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
@@ -136,8 +136,9 @@ scale = Vector2(1, 1.04)
 sprite_frames = SubResource("SpriteFrames_aentf")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.487415
+frame = 1
+frame_progress = 0.755731
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, -49)
+position = Vector2(4, -49)
 shape = SubResource("RectangleShape2D_ehi2d")

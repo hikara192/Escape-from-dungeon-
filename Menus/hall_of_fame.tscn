@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mtpq50qej4vg"]
+[gd_scene load_steps=9 format=3 uid="uid://mtpq50qej4vg"]
 
 [ext_resource type="Script" uid="uid://b1d1y8bb08d3v" path="res://Menus/hall_of_fame.gd" id="1_egmcp"]
 [ext_resource type="PackedScene" uid="uid://b1m84i6njtbc6" path="res://BG/bg.tscn" id="2_4or7f"]
@@ -11,8 +11,12 @@
 line_spacing = 10.0
 paragraph_spacing = 10.0
 font = ExtResource("5_tnny6")
-font_size = 17
+font_size = 20
 font_color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4or7f"]
+font = ExtResource("5_tnny6")
+font_size = 40
 
 [node name="HallOfFame" type="CanvasLayer"]
 script = ExtResource("1_egmcp")
@@ -36,13 +40,24 @@ scale = Vector2(2.15375, 3.37031)
 texture = ExtResource("4_f4ukc")
 
 [node name="Label" type="Label" parent="BestScore"]
-offset_left = -21.3581
-offset_top = -11.5716
-offset_right = 95.6419
-offset_bottom = 16.4284
+offset_left = -23.6796
+offset_top = -12.7585
+offset_right = 94.3204
+offset_bottom = 15.2415
 theme_override_fonts/font = ExtResource("3_sdfl5")
 label_settings = SubResource("LabelSettings_f4ukc")
 
 [node name="BG" parent="." instance=ExtResource("2_4or7f")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 620.0
+offset_top = 61.0
+offset_right = 825.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("3_sdfl5")
+theme_override_font_sizes/font_size = 100
+text = "
+"
+label_settings = SubResource("LabelSettings_4or7f")
 
 [connection signal="pressed" from="GoBack" to="." method="_on_go_back_pressed"]

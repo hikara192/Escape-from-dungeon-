@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvpl0mfmaii1y"]
+
+[sub_resource type="GDScript" id="GDScript_mr3vp"]
+script/source = "extends CanvasLayer
+
+signal on_transition_finished
+
+@onready var color_rect = $ColorRect
+@onready var animation_player = $AnimationPlayer
+
+func _ready():
+	# Отложенный вызов до следующего кадра
+	call_deferred(\"initialize\")
+	MusicManager.stop_music()
+	
+func initialize():
+	if color_rect:
+		color_rect.visible = false
+	if animation_player:
+		animation_player.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished(anim_name):
+	match anim_name:
+		\"fade_to_black\":
+			on_transition_finished.emit()
+			# Автоматически запускаем fade_to_normal после fade_to_black
+			if animation_player.has_animation(\"fade_to_normal\"):
+				animation_player.play(\"fade_to_normal\")
+			else:
+				push_warning(\"Анимация 'fade_to_normal' не найдена!\")
+		\"fade_to_normal\":
+			if color_rect:
+				color_rect.visible = false
+		_:
+			# Игнорируем другие анимации
+			pass
+
+func transition():
+	if color_rect and animation_player:
+		color_rect.visible = true 
+		if animation_player.has_animation(\"fade_to_black\"):
+			animation_player.play(\"fade_to_black\")
+		else:
+			push_error(\"Анимация 'fade_to_black' не найдена!\")
+	
+func transition_and_wait():
+	if color_rect and animation_player:
+		color_rect.visible = true 
+		if animation_player.has_animation(\"fade_to_black\"):
+			animation_player.play(\"fade_to_black\")
+			await on_transition_finished
+		else:
+			push_error(\"Анимация 'fade_to_black' не найдена!\")
+"
+
+[sub_resource type="Animation" id="Animation_n2sm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n6j18"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0edib"]
+resource_name = "fade_to_normal"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jd3j0"]
+_data = {
+&"RESET": SubResource("Animation_n2sm7"),
+&"fade_to_black": SubResource("Animation_n6j18"),
+&"fade_to_normal": SubResource("Animation_0edib")
+}
+
+[node name="transition_screen" type="CanvasLayer"]
+script = SubResource("GDScript_mr3vp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 27.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0211882, 0.0108384, 0.0195107, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jd3j0")
+}

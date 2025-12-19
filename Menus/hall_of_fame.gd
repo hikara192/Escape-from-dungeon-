@@ -2,7 +2,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	$BestScore/Label.text =  "" + str(GlobalVars.hi_score)
-
+	$Label.text = "" + str(GlobalVars.collected_souls_count)
 
 
 

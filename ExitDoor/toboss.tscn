@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://b41p7qpg7at5r"]
+
+[ext_resource type="Script" uid="uid://6qdv4adf8tor" path="res://ExitDoor/toboss.gd" id="1_54y27"]
+[ext_resource type="Texture2D" uid="uid://bti66lsyiw6aw" path="res://res/models/door cls.png" id="2_hn1u6"]
+[ext_resource type="Texture2D" uid="uid://co6h6vfqunbe8" path="res://res/models/door opn.png" id="3_sfpru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqcql"]
+size = Vector2(461.69, 200.771)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrqcy"]
+size = Vector2(124.211, 162.161)
+
+[node name="ExitDoor" type="Node2D"]
+position = Vector2(10, -48)
+scale = Vector2(0.426693, 0.388503)
+script = ExtResource("1_54y27")
+
+[node name="CloseDoor" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-27, 21)
+texture = ExtResource("2_hn1u6")
+metadata/_edit_lock_ = true
+
+[node name="OpenDoor" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-27, 21)
+texture = ExtResource("3_sfpru")
+metadata/_edit_lock_ = true
+
+[node name="GoToNextScene" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToNextScene"]
+position = Vector2(-8.20261, 72.0715)
+shape = SubResource("RectangleShape2D_wqcql")
+
+[node name="DoorOpenAnimate" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpenAnimate"]
+position = Vector2(-24.6078, 52.7666)
+shape = SubResource("RectangleShape2D_yrqcy")
+
+[connection signal="body_entered" from="GoToNextScene" to="." method="_on_go_to_next_scene_body_entered"]
+[connection signal="body_entered" from="DoorOpenAnimate" to="." method="_on_door_open_animate_body_entered"]
+[connection signal="body_exited" from="DoorOpenAnimate" to="." method="_on_door_open_animate_body_exited"]

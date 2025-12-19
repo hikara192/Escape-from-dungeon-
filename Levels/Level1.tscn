@@ -1881,7 +1881,6 @@ color = Color(0.300585, 0.344218, 0.406344, 1)
 [node name="ExitDoor" parent="." instance=ExtResource("3_tlwt5")]
 position = Vector2(2093.37, 1008.4)
 scale = Vector2(0.425909, 0.386189)
-needs_key = true
 next_scene = "res://Levels/Level2.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1915,10 +1914,10 @@ position = Vector2(939.49, 1063.01)
 position = Vector2(200.918, 990.509)
 
 [node name="NPC" parent="." instance=ExtResource("14_104vp")]
-position = Vector2(121.225, 1069.6)
+position = Vector2(105.51, 1070.54)
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
-position = Vector2(14.5918, 1042.29)
+position = Vector2(1.12245, 1047)
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_f5cpa")

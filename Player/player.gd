@@ -295,6 +295,3 @@ func apply_bounce(force: Vector2):
 	
 	# Визуальный эффект отскока
 	await get_tree().create_timer(0.2).timeout
-
-
-	

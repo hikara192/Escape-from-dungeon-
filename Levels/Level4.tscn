@@ -1503,8 +1503,8 @@ layer = -1
 motion_mirroring = Vector2(927.415, 0)
 
 [node name="BgFScn1234" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(471, 866)
-scale = Vector2(0.50625, 0.562963)
+position = Vector2(471, 870.5)
+scale = Vector2(0.50625, 0.606481)
 texture = ExtResource("1_7csao")
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="ParallaxBackground"]
@@ -1514,7 +1514,6 @@ color = Color(0.300585, 0.344218, 0.406344, 1)
 [node name="ExitDoor" parent="." instance=ExtResource("2_xrw8b")]
 position = Vector2(2003.57, 785.251)
 scale = Vector2(0.425909, 0.386189)
-needs_key = true
 next_scene = "res://Levels/Level5.tscn"
 
 [node name="InGameMenu" parent="." instance=ExtResource("3_jtuoa")]

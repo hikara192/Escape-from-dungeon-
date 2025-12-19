@@ -492,7 +492,7 @@ shape = SubResource("RectangleShape2D_btcbx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -22)
 sprite_frames = SubResource("SpriteFrames_wvbyc")
-animation = &"Idle"
+animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.99996, -8)

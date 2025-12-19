@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 GlobalVars="*res://Global/global_vars.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 TransitionScreen="*res://transition_screen.tscn"
+MusicManager="*res://MusicManager.gd"
+Tooboss="*res://tooboss.tscn"
 
 [dialogic]
 
@@ -29,9 +31,13 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "timeline1": "res://dialogs/timeline1.dtl",
-"timeline2": "res://dialogs/timeline2.dtl"
+"timeline2": "res://dialogs/timeline2.dtl",
+"timeline3": "res://dialogs/timeline3.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://Enimies/style1.tres",
+"style1": "res://Enimies/style1.tres"
+}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.08
 text/initial_text_reveal_skippable=true
@@ -66,13 +72,15 @@ audio/channel_defaults={
 }
 }
 variables={}
-layout/style_list=[]
-layout/default_style=""
+layout/style_list=["res://Enimies/style1.tres"]
+layout/default_style="res://Enimies/style1.tres"
 glossary/default_case_sensitive=true
 text/input_action="dialogic_default_action"
 text/autocolor_names=false
 text/autoadvance_fixed_delay=3.0
 text/autoskip_time_per_event=1.0
+animations/join_default="Fade In Up"
+portraits/default_portrait=""
 
 [display]
 

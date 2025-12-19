@@ -19,6 +19,11 @@ var active_dialogs := {}
 var player_health := 100
 var player_max_health := 100
 
+# Переменная для хранения количества собранных душ
+var collected_souls_count : int = 0
+# Словарь для хранения ID собранных душ (для проверки уникальности)
+var collected_souls_ids := {}
+
 func _ready() -> void:	
 	load_game()
 	starts_n += 1
@@ -29,6 +34,7 @@ func _ready() -> void:
 	print("Диалоги загружены: ", completed_dialogs)
 	print("Смертей: ", deaths_n, ", Убийств: ", kills_n)
 	print("Здоровье игрока: ", player_health, "/", player_max_health)
+	print("Собрано душ: ", collected_souls_count)
 
 func load_game() -> void:
 	config = ConfigFile.new()
@@ -46,6 +52,12 @@ func load_game() -> void:
 		# ЗАГРУЖАЕМ ТЕКУЩЕЕ ЗДОРОВЬЕ (если есть) или используем максимум
 		player_health = config.get_value(section_name, "player_health", player_max_health)
 		player_max_health = config.get_value(section_name, "player_max_health", 100)
+		# ЗАГРУЖАЕМ РЕКОРД
+		hi_score = config.get_value(section_name, "hi_score", 0)
+		# ЗАГРУЖАЕМ КОЛИЧЕСТВО СОБРАННЫХ ДУШ
+		collected_souls_count = config.get_value(section_name, "collected_souls_count", 0)
+		# ЗАГРУЖАЕМ ID СОБРАННЫХ ДУШ
+		collected_souls_ids = config.get_value(section_name, "collected_souls_ids", {})
 		print("Загружены диалоги: ", completed_dialogs)
 	else:
 		print("Файл не найден, создаем новые значения")
@@ -58,8 +70,11 @@ func load_game() -> void:
 		completed_dialogs = {}
 		player_health = 100  # Начинаем с полного здоровья
 		player_max_health = 100
+		hi_score = 0
+		collected_souls_count = 0
+		collected_souls_ids = {}
 
-# В функции save_game() сохраняем текущее здоровье:
+# В функции save_game() сохраняем текущее здоровье и рекорд:
 func save_game() -> void:
 	saves_n += 1
 	config = ConfigFile.new()
@@ -74,12 +89,52 @@ func save_game() -> void:
 	# СОХРАНЯЕМ ТЕКУЩЕЕ ЗДОРОВЬЕ
 	config.set_value(section_name, "player_health", player_health)
 	config.set_value(section_name, "player_max_health", player_max_health)
+	# СОХРАНЯЕМ РЕКОРД
+	config.set_value(section_name, "hi_score", hi_score)
+	# СОХРАНЯЕМ КОЛИЧЕСТВО СОБРАННЫХ ДУШ
+	config.set_value(section_name, "collected_souls_count", collected_souls_count)
+	# СОХРАНЯЕМ ID СОБРАННЫХ ДУШ
+	config.set_value(section_name, "collected_souls_ids", collected_souls_ids)
 	
 	var error = config.save(path_to_save_file)
 	if error != OK:
 		print("Ошибка сохранения: ", error)
 	else:
-		print("Игра сохранена. Здоровье: ", player_health, "/", player_max_health)
+		print("Игра сохранена. Здоровье: ", player_health, "/", player_max_health, " Рекорд: ", hi_score, " Душ собрано: ", collected_souls_count)
+
+# Метод для обновления рекорда
+func update_hi_score(new_score: int) -> void:
+	if new_score > hi_score:
+		hi_score = new_score
+		save_game()
+		print("Новый рекорд: ", hi_score)
+
+# Методы для работы с душами
+func add_collected_soul(soul_id: String) -> void:
+	# Проверяем, не собирали ли мы уже эту душу
+	if not collected_souls_ids.has(soul_id):
+		collected_souls_count += 1
+		collected_souls_ids[soul_id] = true
+		save_game()  # Сохраняем игру после сбора души
+		print("Душа собрана: ", soul_id, ". Всего душ: ", collected_souls_count)
+	else:
+		print("Душа уже была собрана ранее: ", soul_id)
+
+func is_soul_collected(soul_id: String) -> bool:
+	return collected_souls_ids.get(soul_id, false)
+
+func get_collected_souls_count() -> int:
+	return collected_souls_count
+
+func set_collected_souls_count(value: int):
+	collected_souls_count = value
+	save_game()
+
+func reset_collected_souls():
+	collected_souls_count = 0
+	collected_souls_ids = {}
+	save_game()
+	print("Счетчик душ сброшен")
 
 func is_dialog_completed(dialog_id: String) -> bool:
 	return completed_dialogs.get(dialog_id, false)
@@ -153,6 +208,16 @@ func reset_player_health_completely():
 	player_max_health = 100
 	save_game()
 	print("Здоровье полностью сброшено: ", player_health, "/", player_max_health)
+
+# Сброс всех прогрессивных данных (для новой игры)
+func reset_progress():
+	collected_souls_count = 0
+	collected_souls_ids = {}
+	completed_dialogs = {}
+	score = 0
+	hi_score = 0
+	save_game()
+	print("Весь прогресс сброшен")
 
 func print_dialog_state():
 	print("=== СОСТОЯНИЕ ДИАЛОГОВ ===")

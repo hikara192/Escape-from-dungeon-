@@ -2,8 +2,10 @@ extends Area2D
 
 @export var timeline_name := "timeline1"
 @export var timeline_name_level2 := "timeline2"
+@export var timeline_name_timeline3 := "timeline3"
 @export var dialog_id := "npc_1"
 @export var dialog_id_level2 := "npc_1_level2"
+@export var dialog_id_timeline3 := "npc_1_timeline3"
 @export var rotation_speed: float = 0.2
 @export var visual_node: AnimatedSprite2D
 
@@ -17,8 +19,10 @@ func _ready() -> void:
 	print("NPC: ", name)
 	print("Dialog ID: ", dialog_id)
 	print("Dialog ID Level 2: ", dialog_id_level2)
+	print("Dialog ID Timeline3: ", dialog_id_timeline3)
 	print("Timeline: ", timeline_name)
 	print("Timeline Level 2: ", timeline_name_level2)
+	print("Timeline3: ", timeline_name_timeline3)
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
@@ -44,9 +48,10 @@ func _check_global_state():
 	print("GlobalVars доступен")
 	print("Завершенные диалоги: ", global.completed_dialogs)
 	
-	# Проверяем оба ID
+	# Проверяем все ID
 	print("Диалог 1 завершен: ", global.is_dialog_completed(dialog_id))
 	print("Диалог 2 завершен: ", global.is_dialog_completed(dialog_id_level2))
+	print("Диалог 3 завершен: ", global.is_dialog_completed(dialog_id_timeline3))
 	print("Диалог активен: ", global.is_dialog_active(get_current_dialog_id()))
 
 func _on_body_entered(body: Node2D) -> void:
@@ -91,6 +96,29 @@ func _on_body_exited(body: Node2D) -> void:
 	
 	print("=========================")
 
+# ПРОВЕРКА ДЛЯ LEVEL1.TSCN И LEVEL2.TSCN
+func is_allowed_scene() -> bool:
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.scene_file_path:
+		var scene_path = current_scene.scene_file_path
+		
+		# ТОЧНОЕ СОВПАДЕНИЕ ПУТЕЙ ДЛЯ Level1 И Level2
+		var allowed_scenes = [
+			"res://Levels/Level1.tscn",
+			"res://Levels/Level2.tscn"
+		]
+		
+		for allowed_scene in allowed_scenes:
+			if scene_path == allowed_scene:
+				print("✅ Это разрешенная сцена: ", scene_path)
+				return true
+		
+		print("❌ Это не разрешенная сцена: ", scene_path)
+		return false
+	
+	print("❌ Не удалось определить путь сцены")
+	return false
+
 func _can_start_dialog() -> bool:
 	if not has_node("/root/GlobalVars"):
 		print("❌ GlobalVars недоступен")
@@ -102,11 +130,27 @@ func _can_start_dialog() -> bool:
 	
 	var global = get_node("/root/GlobalVars")
 	var current_dialog_id = get_current_dialog_id()
+	var current_timeline = get_timeline_for_current_level()
 	
 	print("🔍 ПРОВЕРКА ДИАЛОГА: ", current_dialog_id)
+	print("   Timeline: ", current_timeline)
 	print("   Завершен: ", global.is_dialog_completed(current_dialog_id))
 	print("   Активен: ", global.is_dialog_active(current_dialog_id))
 	
+	# ОСОБАЯ ЛОГИКА ДЛЯ TIMELINE3 - он может запускаться многократно на Level1 и Level2
+	if current_dialog_id == dialog_id_timeline3:
+		print("🎯 Это timeline3 - проверяем завершение диалога 1 и разрешенную сцену")
+		var dialogue1_completed = global.is_dialog_completed(dialog_id) or global.is_dialog_completed("timeline1")
+		if not dialogue1_completed:
+			print("❌ Timeline3: диалог 1 не завершен")
+			return false
+		if not is_allowed_scene():
+			print("❌ Timeline3: это не разрешенная сцена")
+			return false
+		print("✅ Timeline3: диалог 1 завершен и это разрешенная сцена, можно запускать")
+		return true
+	
+	# СТАНДАРТНАЯ ПРОВЕРКА ДЛЯ ОСТАЛЬНЫХ ДИАЛОГОВ
 	if global.is_dialog_completed(current_dialog_id):
 		print("❌ Диалог уже завершен глобально: ", current_dialog_id)
 		return false
@@ -152,22 +196,42 @@ func smooth_turn_towards_player(player: Node2D):
 	print("=========================")
 
 func get_current_dialog_id() -> String:
-	# Определяем какой ID использовать в зависимости от уровня
-	if is_level_2():
+	var global = get_node("/root/GlobalVars")
+	
+	# Проверяем завершен ли диалог 1
+	var dialogue1_completed = global.is_dialog_completed(dialog_id) or global.is_dialog_completed("timeline1")
+	
+	# timeline3 доступен на Level1.tscn И Level2.tscn
+	if is_allowed_scene() and dialogue1_completed:
+		print("🎯 Разрешенная сцена + диалог 1 завершен, используем timeline3")
+		return dialog_id_timeline3
+	elif is_level_2():
 		print("🎯 Используем ID для 2 уровня: ", dialog_id_level2)
 		return dialog_id_level2
-	else:
-		print("📁 Используем стандартный ID: ", dialog_id)
+	elif is_allowed_scene():
+		print("📁 Разрешенная сцена, используем стандартный ID: ", dialog_id)
 		return dialog_id
+	else:
+		print("🚫 Не разрешенная сцена, диалог недоступен")
+		return "disabled"
 
 func get_timeline_for_current_level() -> String:
-	# Определяем какой timeline использовать в зависимости от уровня
-	if is_level_2():
+	var global = get_node("/root/GlobalVars")
+	var dialogue1_completed = global.is_dialog_completed(dialog_id) or global.is_dialog_completed("timeline1")
+	
+	# timeline3 доступен на Level1.tscn И Level2.tscn
+	if is_allowed_scene() and dialogue1_completed:
+		print("🎯 Разрешенная сцена + диалог 1 завершен, используем timeline3")
+		return timeline_name_timeline3
+	elif is_level_2():
 		print("🎯 Используем timeline для 2 уровня: ", timeline_name_level2)
 		return timeline_name_level2
-	else:
-		print("📁 Используем стандартный timeline: ", timeline_name)
+	elif is_allowed_scene():
+		print("📁 Разрешенная сцена, используем стандартный timeline: ", timeline_name)
 		return timeline_name
+	else:
+		print("🚫 Не разрешенная сцена, диалог недоступен")
+		return ""
 
 func _get_level_name() -> String:
 	var current_scene = get_tree().current_scene
@@ -295,10 +359,12 @@ func _input(event):
 		print("=== ТЕСТОВАЯ ИНФОРМАЦИЯ ===")
 		print("Текущий уровень: ", _get_level_name())
 		print("Это Level2: ", is_level_2())
+		print("Это разрешенная сцена: ", is_allowed_scene())
 		print("Будет использован ID: ", get_current_dialog_id())
 		print("Будет использован Timeline: ", get_timeline_for_current_level())
 		
 		var global = get_node("/root/GlobalVars")
 		print("Диалог npc_1 завершен: ", global.is_dialog_completed("npc_1"))
 		print("Диалог npc_1_level2 завершен: ", global.is_dialog_completed("npc_1_level2"))
+		print("Диалог npc_1_timeline3 завершен: ", global.is_dialog_completed("npc_1_timeline3"))
 		print("=========================")
