@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 
 func _move_in_direction() -> Tween:
-	# Меняем координату Y вместо X для движения вверх/вниз
+	
 	var target_y = position.y + (move_distance * move_direction)
 	var tween = create_tween()
 	tween.tween_property(self, "position:y", target_y, move_speed)\
@@ -31,7 +31,7 @@ func _move_in_direction() -> Tween:
 
 func _start_movement_cycle() -> void:
 	while true:
-		# Ждем 5 секунд перед началом движения
+	
 		await get_tree().create_timer(40.0).timeout
 		
 		# Выполняем движение

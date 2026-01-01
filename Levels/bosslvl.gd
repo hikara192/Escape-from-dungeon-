@@ -5,6 +5,7 @@ extends Node2D
 @onready var bloodwall_camera = $Camera2D  # Отдельная камера на сцене
 
 func _ready():
+	GlobalVars.player_health = 100
 	MusicManager.stop_music()
 	hp_bar.value = GlobalVars.player_health
 	

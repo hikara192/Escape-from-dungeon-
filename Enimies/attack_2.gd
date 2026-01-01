@@ -29,7 +29,7 @@ func _move_in_direction() -> Tween:
 func _start_movement_cycle() -> void:
 	while true:
 		
-		await get_tree().create_timer(30.0).timeout
+		await get_tree().create_timer(35.0).timeout
 		
 		
 		var tween = _move_in_direction()

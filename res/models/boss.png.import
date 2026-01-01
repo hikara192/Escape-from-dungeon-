@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvjvvo7y3wwm6"
-path="res://.godot/imported/blood wall.png-7fac431d6ed36dc4d9535feca5b30d63.ctex"
+uid="uid://bpmnyi5jctamy"
+path="res://.godot/imported/boss.png-000dd9f5f9f6a55e30fcecee361b65b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/models/blood wall.png"
-dest_files=["res://.godot/imported/blood wall.png-7fac431d6ed36dc4d9535feca5b30d63.ctex"]
+source_file="res://res/models/boss.png"
+dest_files=["res://.godot/imported/boss.png-000dd9f5f9f6a55e30fcecee361b65b8.ctex"]
 
 [params]
 

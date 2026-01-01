@@ -13,7 +13,7 @@ var attack_started: bool = false  # Флаг начала атак
 
 # Обновленные параметры состояний
 var state_durations = {
-	"initial_waiting": 64.0,  
+	"initial_waiting": 60.0,  
 	"waiting": 6.0,          
 	"attacking": 10.0,        
 	"returning": 5.0         
