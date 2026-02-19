@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ry5m66sme0j5"]
+[gd_scene load_steps=31 format=3 uid="uid://ry5m66sme0j5"]
 
 [ext_resource type="PackedScene" uid="uid://dwyrjrij2sfyf" path="res://ExitDoor/exit_door.tscn" id="1_506po"]
 [ext_resource type="Texture2D" uid="uid://c0aobbnkduc05" path="res://BG/bg f scn 1234.png" id="1_lf2mf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chybt5m5crw48" path="res://res/models/models.png" id="3_jglcl"]
 [ext_resource type="PackedScene" uid="uid://66y4d8d3gubv" path="res://Menus/in_game_menu.tscn" id="4_w0h0a"]
 [ext_resource type="PackedScene" uid="uid://74rqwbew1h2j" path="res://Traps/Spikes/spikes.tscn" id="5_80cou"]
+[ext_resource type="Texture2D" uid="uid://c7u6nu0i3k02l" path="res://res/models/цепь.png" id="5_l5acx"]
 [ext_resource type="PackedScene" uid="uid://badmw168qavq6" path="res://Items/soul.tscn" id="5_v115i"]
 [ext_resource type="PackedScene" uid="uid://ubt5p60jnniq" path="res://Items/soul2.tscn" id="7_xosfc"]
 [ext_resource type="PackedScene" uid="uid://dfbubojgwlxeh" path="res://Items/key.tscn" id="8_mbiy8"]
@@ -1459,6 +1460,11 @@ texture = ExtResource("1_lf2mf")
 [node name="CanvasModulate2" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
 color = Color(0.300585, 0.344218, 0.406344, 1)
+
+[node name="Цепь" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(453, 782)
+scale = Vector2(0.890909, 1.06208)
+texture = ExtResource("5_l5acx")
 
 [node name="ExitDoor" parent="." instance=ExtResource("1_506po")]
 position = Vector2(1857.65, 881.289)

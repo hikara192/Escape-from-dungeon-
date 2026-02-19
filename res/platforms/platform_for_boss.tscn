@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6nnfvbnknqdi"]
+
+[ext_resource type="Script" uid="uid://u3pcetvjx2f8" path="res://res/platforms/platform_for_boss.gd" id="1_kfoei"]
+[ext_resource type="Texture2D" uid="uid://lu4b5leqfi5y" path="res://res/platforms/platformboss1.png" id="2_toq8p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvvnk"]
+atlas = ExtResource("2_toq8p")
+region = Rect2(0, 0, 159, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ybnd"]
+atlas = ExtResource("2_toq8p")
+region = Rect2(159, 0, 159, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lcmq"]
+atlas = ExtResource("2_toq8p")
+region = Rect2(318, 0, 159, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24r3n"]
+atlas = ExtResource("2_toq8p")
+region = Rect2(477, 0, 159, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml08v"]
+atlas = ExtResource("2_toq8p")
+region = Rect2(636, 0, 159, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjspl"]
+atlas = ExtResource("2_toq8p")
+region = Rect2(795, 0, 159, 114)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wldwi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvvnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ybnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lcmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24r3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml08v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjspl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhrai"]
+size = Vector2(128, 26.5)
+
+[node name="platform for boss" type="Node2D"]
+script = ExtResource("1_kfoei")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-3, 0)
+sprite_frames = SubResource("SpriteFrames_wldwi")
+frame_progress = 0.222026
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-2, -17)
+shape = SubResource("RectangleShape2D_rhrai")
+one_way_collision_margin = 0.0

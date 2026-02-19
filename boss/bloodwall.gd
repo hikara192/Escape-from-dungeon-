@@ -2,9 +2,9 @@ extends Node2D
 
 @export var amplitude: float = 25.0
 @export var frequency: float = 2.0
-@export var initial_speed: float = 99.0  # Начальная скорость
-@export var acceleration: float = 0.8    # Ускорение в пикселях/сек²
-@export var max_speed: float = 300.0      # Максимальная скорость
+@export var initial_speed: float = 150.0  # Начальная скорость
+@export var acceleration: float = 0.5   # Ускорение в пикселях/сек²
+@export var max_speed: float = 350.0      # Максимальная скорость
 
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D

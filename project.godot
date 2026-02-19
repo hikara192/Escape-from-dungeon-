@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PLATFORMER враг и персонаж готовы"
-run/main_scene="uid://btwabp43puvcl"
+run/main_scene="uid://chnol556xgvwf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

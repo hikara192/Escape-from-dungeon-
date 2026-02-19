@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://chnol556xgvwf"]
+
+[ext_resource type="Script" uid="uid://b8ski1pxygwkm" path="res://startdialog.gd" id="1_ys1oi"]
+[ext_resource type="FontFile" uid="uid://cnc00n6ffab2y" path="res://res/DigitalPixelV31-Regular_0.otf" id="2_qjtlt"]
+[ext_resource type="AudioStream" uid="uid://r75us63e0scm" path="res://res/sounds/perehodmm.mp3" id="3_qbabi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ys1oi"]
+font = ExtResource("2_qjtlt")
+font_size = 30
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ys1oi")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -66.0
+offset_top = -74.0
+offset_right = 1977.0
+offset_bottom = 1158.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 657.0
+offset_right = 1925.0
+offset_bottom = 1077.0
+label_settings = SubResource("LabelSettings_ys1oi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qbabi")

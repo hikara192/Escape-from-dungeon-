@@ -32,12 +32,20 @@ func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/Level1.tscn")
 
 func _on_exit_pressed() -> void:
+	if has_node("AudioStreamPlayer1") and $AudioStreamPlayer1.playing:
+		$AudioStreamPlayer1.stop()
+		
+	$AudioStreamPlayer.play()
 	hide_all_content()
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
 	get_tree().quit()
 
 func _on_return_pressed() -> void:
+	if has_node("AudioStreamPlayer1") and $AudioStreamPlayer1.playing:
+		$AudioStreamPlayer1.stop()
+		
+	$AudioStreamPlayer.play()
 	hide_all_content()
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished

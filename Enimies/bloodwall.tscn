@@ -435,7 +435,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i21c8"]
-size = Vector2(377, 206.375)
+size = Vector2(377, 209.802)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_trmmk"]
 atlas = ExtResource("8_o8apo")
@@ -591,12 +591,13 @@ position = Vector2(244.666, -214.001)
 scale = Vector2(1.6675, 1.4775)
 sprite_frames = SubResource("SpriteFrames_rdeko")
 animation = &"idle"
-frame_progress = 0.540664
+frame = 9
+frame_progress = 0.520537
 
 [node name="Area2D" type="Area2D" parent="attack3"]
 
 [node name="Collisionattack3" type="CollisionShape2D" parent="attack3/Area2D"]
-position = Vector2(-624.331, 42.9988)
+position = Vector2(-586.906, 10.9203)
 rotation = 3.14159
 scale = Vector2(1.2, 1)
 shape = SubResource("RectangleShape2D_i21c8")
@@ -610,7 +611,7 @@ script = ExtResource("7_4fbvt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="2attack1"]
 sprite_frames = SubResource("SpriteFrames_8krsn")
 animation = &"attack"
-frame_progress = 0.355285
+frame_progress = 0.557268
 
 [node name="Area2D" type="Area2D" parent="2attack1"]
 
@@ -627,6 +628,7 @@ script = ExtResource("9_o8apo")
 [node name="scullanimated2" type="AnimatedSprite2D" parent="2attack2"]
 sprite_frames = SubResource("SpriteFrames_8krsn")
 animation = &"attack"
+frame_progress = 0.668576
 
 [node name="scullarea2" type="Area2D" parent="2attack2"]
 
@@ -643,6 +645,7 @@ script = ExtResource("10_tifj4")
 [node name="scullanimated2" type="AnimatedSprite2D" parent="2attack3"]
 sprite_frames = SubResource("SpriteFrames_8krsn")
 animation = &"attack"
+frame_progress = 0.539864
 
 [node name="scullarea2" type="Area2D" parent="2attack3"]
 position = Vector2(0, 127)
